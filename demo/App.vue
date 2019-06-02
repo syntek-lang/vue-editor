@@ -1,22 +1,33 @@
 <template lang="html">
   <div class="">
-    <HelloWorld />
+    <CodeBlock
+      class="codeblock"
+      :code="`function sayHello(person)
+\tprint('Hello, '.append(person))`"
+      :mode="'syntek'"
+      readonly
+    />
   </div>
 </template>
 
 <script>
-import { HelloWorld } from '../src';
+import { CodeBlock } from '../src';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    CodeBlock,
   },
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
 body {
   margin: 0;
+  height: 100vh;
+}
+
+.codeblock {
+  height: 200px;
 }
 </style>
