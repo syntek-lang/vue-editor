@@ -5,9 +5,7 @@
 </template>
 
 <script>
-import {
-  HelloWorld
-} from '../src';
+import { HelloWorld } from '../src';
 
 export default {
   name: 'App',
