@@ -1,0 +1,29 @@
+{
+  "name": "@syntek/vue-syntek-editor",
+  "version": "0.0.1",
+  "description": "Vue components to easily build Syntek editors",
+  "main": "dist/VueSyntekEditor.umd.js",
+  "module": "src/index.js",
+  "unpkg": "dist/VueSyntekEditor.umd.min.js",
+  "scripts": {
+    "serve": "vue-cli-service serve --open demo",
+    "build": "vue-cli-service build --target lib --name VueSyntekEditor ./src/index.js",
+    "lint": "eslint . --ext .js,.vue"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.8.0",
+    "@vue/cli-plugin-eslint": "^3.8.0",
+    "@vue/cli-service": "^3.8.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
