@@ -5,7 +5,16 @@
       :code="`function sayHello(person)
 \tprint('Hello, '.append(person))`"
       :mode="'syntek'"
+      :theme="'material'"
       readonly
+    />
+
+    <CodeBlock
+      class="codeblock"
+      :code="`function sayHello(person) {
+\tconsole.log('Hello, ' + person)
+}`"
+      :mode="'javascript'"
     />
   </div>
 </template>

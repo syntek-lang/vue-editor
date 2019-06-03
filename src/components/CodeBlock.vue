@@ -4,12 +4,7 @@
 
 <script>
 import CodeMirror from 'codemirror';
-
 import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/monokai.css';
-
-import 'codemirror/mode/javascript/javascript';
-import '@syntek/codemirror-mode-syntek';
 
 export default {
   name: 'CodeBlock',
@@ -21,38 +16,42 @@ export default {
     mode: {
       type: String,
       required: true,
-      validator(value) {
-        return ['syntek', 'javascript'].includes(value);
-      },
     },
-    disableLineNumbers: {
-      type: Boolean,
+    theme: {
+      type: String,
+      default: 'monokai',
     },
-    readonly: {
-      type: Boolean,
-    },
-    events: {
-      type: Array,
-      default: () => [],
-    },
+    disableLineNumbers: Boolean,
+    readonly: Boolean,
   },
   data() {
     return {
       instance: null,
     };
   },
-  mounted() {
+  async mounted() {
+    // Fetch mode and theme
+    await Promise.all([
+      this.mode === 'syntek'
+        ? import('@syntek/codemirror-mode-syntek')
+        : import(`codemirror/mode/${this.mode}/${this.mode}`),
+
+      import(`codemirror/theme/${this.theme}.css`),
+    ]);
+
+    // Create instance
     this.instance = CodeMirror(this.$el, {
       value: this.code,
       mode: this.mode,
-      theme: 'monokai',
+      theme: this.theme,
       indentWithTabs: true,
       lineNumbers: !this.disableLineNumbers,
       readOnly: this.readonly ? 'nocursor' : false,
+      styleSelectedText: true,
     });
-
     this.instance.setSize('100%', '100%');
 
+    // Assign events
     for (const event of Object.keys(this.$listeners)) {
       this.instance.on(event, (...args) => {
         this.$emit(event, ...args);
@@ -60,13 +59,10 @@ export default {
     }
   },
   destroy() {
-    const element = this.instance.doc.cm.getWrapperElement();
+    const element = this.instance.getWrapperElement();
     if (element && element.remove) {
       element.remove();
     }
   },
 };
 </script>
-
-<style lang="css" scoped>
-</style>
