@@ -34,7 +34,7 @@ export default {
     await Promise.all([
       this.mode === 'syntek'
         ? import('@syntek/codemirror-mode-syntek')
-        : import(`codemirror/mode/${this.mode}/${this.mode}`),
+        : import(`codemirror/mode/${this.mode}/${this.mode}.js`),
 
       import(`codemirror/theme/${this.theme}.css`),
     ]);
@@ -47,7 +47,6 @@ export default {
       indentWithTabs: true,
       lineNumbers: !this.disableLineNumbers,
       readOnly: this.readonly ? 'nocursor' : false,
-      styleSelectedText: true,
     });
     this.instance.setSize('100%', '100%');
 
