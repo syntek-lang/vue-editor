@@ -8,6 +8,7 @@
   "scripts": {
     "serve": "vue-cli-service serve --open demo",
     "build": "vue-cli-service build --target lib --name VueSyntekEditor ./src/index.js",
+    "prepublishOnly": "npm run build",
     "lint": "eslint . --ext .js,.vue"
   },
   "dependencies": {
