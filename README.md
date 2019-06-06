@@ -1,3 +1,3 @@
-# vue-syntek-editor
+# @syntek/vue-editor
 
-Vue components to easily build Syntek editors
+> Vue components to easily build Syntek editors

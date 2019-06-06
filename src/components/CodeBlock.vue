@@ -33,7 +33,7 @@ export default {
     // Fetch mode and theme
     await Promise.all([
       this.mode === 'syntek'
-        ? import('@syntek/codemirror-mode-syntek')
+        ? import('@syntek/codemirror-mode')
         : import(`codemirror/mode/${this.mode}/${this.mode}.js`),
 
       import(`codemirror/theme/${this.theme}.css`),

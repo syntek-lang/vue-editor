@@ -1,18 +1,18 @@
 {
-  "name": "@syntek/vue-syntek-editor",
-  "version": "0.0.1",
+  "name": "@syntek/vue-editor",
+  "version": "0.0.2",
   "description": "Vue components to easily build Syntek editors",
-  "main": "dist/VueSyntekEditor.umd.js",
+  "main": "dist/VueEditor.umd.js",
   "module": "src/index.js",
-  "unpkg": "dist/VueSyntekEditor.umd.min.js",
+  "unpkg": "dist/VueEditor.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve --open demo",
-    "build": "vue-cli-service build --target lib --name VueSyntekEditor ./src/index.js",
+    "build": "vue-cli-service build --target lib --name VueEditor ./src/index.js",
     "prepublishOnly": "npm run build",
     "lint": "eslint . --ext .js,.vue"
   },
   "dependencies": {
-    "@syntek/codemirror-mode-syntek": "^1.0.0",
+    "@syntek/codemirror-mode": "^1.0.1",
     "codemirror": "^5.47.0",
     "core-js": "^2.6.5",
     "vue": "^2.6.10"
