@@ -8,6 +8,9 @@ import 'codemirror/lib/codemirror.css';
 
 export default {
   name: 'CodeBlock',
+  model: {
+    prop: 'code',
+  },
   props: {
     code: {
       type: String,
@@ -29,6 +32,18 @@ export default {
       instance: null,
     };
   },
+  watch: {
+    code(newValue) {
+      const value = this.instance.getValue();
+
+      if (newValue !== value) {
+        const scrollInfo = this.instance.getScrollInfo();
+
+        this.instance.setValue(newValue);
+        this.instance.scrollTo(scrollInfo.left, scrollInfo.top);
+      }
+    },
+  },
   async mounted() {
     // Fetch mode and theme
     await Promise.all([
@@ -49,6 +64,11 @@ export default {
       readOnly: this.readonly ? 'nocursor' : false,
     });
     this.instance.setSize('100%', '100%');
+
+    // Fire input event on change for 2 way data binding
+    this.instance.on('change', () => {
+      this.$emit('input', this.instance.getValue());
+    });
 
     // Assign events
     for (const event of Object.keys(this.$listeners)) {

@@ -10,11 +10,22 @@
     />
 
     <CodeBlock
+      v-model="code"
       class="codeblock"
-      :code="`function sayHello(person) {
-\tconsole.log('Hello, ' + person)
-}`"
       :mode="'javascript'"
+    />
+
+    <CodeBlock
+      class="codeblock"
+      :code="`int main()
+{
+\tstd::cout << &quot;Hello!&quot;;
+\treturn 0;
+}`"
+      :mode="'clike'"
+      :theme="'blackboard'"
+      disable-line-numbers
+      readonly
     />
   </div>
 </template>
@@ -26,6 +37,13 @@ export default {
   name: 'App',
   components: {
     CodeBlock,
+  },
+  data() {
+    return {
+      code: `function print(...values) {
+\tconsole.log(...values);
+}`,
+    };
   },
 };
 </script>

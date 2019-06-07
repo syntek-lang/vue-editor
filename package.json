@@ -1,11 +1,12 @@
 {
   "name": "@syntek/vue-editor",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Vue components to easily build Syntek editors",
   "main": "dist/VueEditor.umd.js",
   "module": "src/index.js",
   "unpkg": "dist/VueEditor.umd.min.js",
   "scripts": {
+    "test": "npm run lint && npm run build",
     "serve": "vue-cli-service serve --open demo",
     "build": "vue-cli-service build --target lib --name VueEditor ./src/index.js",
     "prepublishOnly": "npm run build",
