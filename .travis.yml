@@ -12,11 +12,13 @@ jobs:
       name: "Lint"
     - script: npm run build
       name: "Build"
-
-deploy:
-  provider: npm
-  email: "$NPM_EMAIL"
-  api_key: "$NPM_TOKEN"
-  skip_cleanup: true
-  on:
-    tags: true
+    
+    - stage: Deploy
+      script: skip
+      deploy:
+        provider: npm
+        email: "$NPM_EMAIL"
+        api_key: "$NPM_TOKEN"
+        skip_cleanup: true
+        on:
+          tags: true
