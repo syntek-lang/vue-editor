@@ -10,6 +10,8 @@ jobs:
     - stage: Test
       script: npm run lint
       name: "Lint"
+    - script: npm run build
+      name: "Build"
 
 deploy:
   provider: npm

@@ -1,6 +1,6 @@
 {
   "name": "@syntek/vue-editor",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Vue components to easily build Syntek editors",
   "main": "dist/VueEditor.umd.js",
   "module": "src/index.js",
