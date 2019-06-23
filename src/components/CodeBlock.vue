@@ -3,9 +3,6 @@
 </template>
 
 <script>
-import CodeMirror from 'codemirror';
-import 'codemirror/lib/codemirror.css';
-
 export default {
   name: 'CodeBlock',
   model: {
@@ -45,8 +42,11 @@ export default {
     },
   },
   async mounted() {
-    // Fetch mode and theme
-    await Promise.all([
+    // Fetch CodeMirror, mode, and theme
+    const [{ default: CodeMirror }] = await Promise.all([
+      import('codemirror'),
+      import('codemirror/lib/codemirror.css'),
+
       this.mode === 'syntek'
         ? import('@syntek/codemirror-mode')
         : import(`codemirror/mode/${this.mode}/${this.mode}.js`),
